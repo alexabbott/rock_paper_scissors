@@ -1,0 +1,215 @@
+<!DOCYTPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway">
+
+	<style>
+		html {
+			width: 100%;
+		}
+		body {
+			color: #fff;
+			text-align: center;
+			font-family: 'Raleway', sans-serif;
+			width: 100%;
+			margin: 0 auto;
+			background: #4c4c4c; 
+			background: url("bg.jpg");
+
+		}
+		h1 {
+			background: rgba(255,255,255,0.3);
+			color: #fff;
+			padding: 5px 0 10px 0;
+			font-size: 4em;
+			margin-top: 20px;
+		}
+
+		#rockImage {
+			width: 210px;
+			margin-right:15px;
+		}		
+
+		#paperImage {
+			width: 210px;
+			margin: 0 5px 0 5px;
+		}		
+
+		#scissorsImage {
+			width: 210px;
+			margin: 0 5px 0 5px;
+		}
+
+		#jackieImage {
+			width: 210px;
+			margin-left:15px;
+		}
+
+		#instructions {
+			font-weight: bold;
+			font-size: 3em;
+			line-height: 3px;
+			margin-top: 28px;
+			padding-top: 28px;
+		}
+
+		#compChoice {
+			font-weight: bold;
+		}
+		#answer1 {
+			color: #fd6b5c;
+			font-size: 2em;
+		}	
+		#answer2 {
+			color: #fd6b5c;
+			font-size: 2em;
+		}
+		#winner {
+			font-size: 4em;
+		}
+
+
+	</style>
+
+</head>
+<body>
+
+<h1>Play Rock, Paper, Scissors... Jackie Chan!</h1>
+
+<p id="instructions">Make a move:</p>
+
+<div id="buttons">
+
+	<a href="#"><img src="rock.png" alt="rock" id="rockImage" /></a>
+
+	<a href="#"><img src="paper.png" alt="paper" id="paperImage" /></a>
+
+	<a href="#"><img src="scissors.png" alt="scissors" id="scissorsImage" /></a>
+
+	<a href="#"><img src="jackie.png" alt="jackie chan" id="jackieImage" /></a>
+
+
+</div>
+
+<p id="userChoice"><span id="answer1"></span></p>
+
+
+<p id="compChoice"><span id="answer2"></span></p>
+
+
+<p id="winner" ></p>
+
+
+
+<script type="text/javascript">
+
+
+	// Function to compare user's choice and computer's choice
+	var compare = function(choice1, choice2) {
+		if (choice1 === choice2) {
+			return "The result is a tie!";
+		}
+		else if (choice1 === "rock") {
+			if (choice2 === "scissors") {
+				return ("you win!" + "<br>" + "rock crushes scissors");
+			}
+			else {
+				return ("you lose!" + "<br>" + "paper covers rock");
+			}
+		}
+		else if (choice1 === "paper") {
+			if (choice2 === "rock") {
+				return ("you win!" + "<br>" + "paper covers rock");
+			}
+			else {
+				return ("you lose!" + "<br>" + "scissors cut paper");
+			}
+		}
+		else if (choice1 === "scissors") {
+			if (choice2 === "rock") {
+				return ("you lose!" + "<br>" + "rock crushes scissors");
+			}
+			else {
+				return ("you win!" + "<br>" +  "scissors cut paper");
+			}
+		}
+		else if (choice1 === "jackie chan") {
+			if (choice2 === "rock") {
+				return ("you win!" + "<br>" + "jackie chan crushes rock");
+			}
+			else if (choice2 === "paper") {
+				return ("you win!" + "<br>" + "jackie chan slices paper");
+			}
+			else {
+				return ("you win!" + "<br>" +  "jackie chan destroys scissors");
+			}
+		}
+	};
+
+
+	// Randomly calculate computer's choice
+	var computerChoice = Math.random();
+	if (computerChoice < 0.34) {
+		computerChoice = "rock";
+	} 
+	else if(computerChoice <= 0.67) {
+		computerChoice = "paper";
+	} 
+	else {
+		computerChoice = "scissors";
+	} 
+
+	// Get user's choice based on which button they click
+	// Then run the compare function and show the user's choice, computer's choice & result
+
+	var buttonsDiv = document.getElementById("buttons");
+	var instructions = document.getElementById("instructions");
+
+	window.onload = function() {
+     	var button1 = document.getElementById("rockImage").onclick = function() {
+	        userChoice = this.alt;
+		    buttonsDiv.style.display = 'none';
+		    instructions.style.display = 'none';
+		    document.getElementById("winner").innerHTML += compare(userChoice, computerChoice);
+		    document.getElementById("answer1").innerHTML += ("You chose: " + userChoice);
+		    document.getElementById("answer2").innerHTML += ("The computer chose: " + computerChoice);
+      	};
+      	var button2 = document.getElementById("paperImage").onclick = function() {
+	        userChoice = this.alt;
+		    buttonsDiv.style.display = 'none';
+		    instructions.style.display = 'none';
+		    document.getElementById("winner").innerHTML += compare(userChoice, computerChoice);
+		    document.getElementById("answer1").innerHTML += ("You chose: " + userChoice);
+		    document.getElementById("answer2").innerHTML += ("The computer chose: " + computerChoice);
+      	};
+      	var button3 = document.getElementById("scissorsImage").onclick = function() {
+	        userChoice = this.alt;
+		    buttonsDiv.style.display = 'none';
+		    instructions.style.display = 'none';
+		    document.getElementById("winner").innerHTML += compare(userChoice, computerChoice);
+		    document.getElementById("answer1").innerHTML += ("You chose: " + userChoice);
+		    document.getElementById("answer2").innerHTML += ("The computer chose: " + computerChoice);
+      	};
+      	var button5 = document.getElementById("jackieImage").onclick = function() {
+	        userChoice = this.alt;
+		    buttonsDiv.style.display = 'none';
+		    instructions.style.display = 'none';
+		    document.getElementById("winner").innerHTML += compare(userChoice, computerChoice);
+		    document.getElementById("answer1").innerHTML += ("You chose: " + userChoice);
+		    document.getElementById("answer2").innerHTML += ("The computer chose: " + computerChoice);
+      	};
+    };
+
+
+	// document.form1.reset.onclick = function() {
+	//   userChoice = null;
+	//   buttonsDiv.style.display = 'inline';
+	//   return true;
+	// };
+
+
+</script>
+
+</body>
+</html>
